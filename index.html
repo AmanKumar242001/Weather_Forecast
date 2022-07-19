@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http - equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Weather</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+
+</head>
+<style media="screen">
+    .type {
+        display: inline-block;
+        vertical-align: bottom;
+    }
+    
+    .type>span {
+        color: #00f2cd;
+        display: grid;
+        overflow: hidden;
+        height: 1.2em;
+        font-weight: bolder;
+    }
+    
+    .type span span {
+        width: 0%;
+        max-width: max-content;
+        overflow: hidden;
+        height: inherit;
+        font-size: 30px;
+        word-break: break-all;
+        animation: c 0.1s infinite steps(1), t 0.1s linear infinite alternate;
+    }
+    
+    .type span span:before {
+        content: " ";
+        display: inline-block;
+    }
+    
+    @keyframes t {
+        90%,
+        100% {
+            width: 100%
+        }
+    }
+    
+    @keyframes c {
+        0%,
+        100% {
+            box-shadow: 5px 0 0 #0000
+        }
+        50% {
+            box-shadow: 5px 0 0 rgb(11, 11, 11)
+        }
+    }
+    
+    @keyframes m {
+        100% {
+            transform: translateY(-400%)
+        }
+    }
+</style>
+
+<body>
+    <div class="App">
+        <div class="jumbotron jumbotron-fluid" id="myJam">
+            <h1 style="font-size: 80px; font-weight: bold">Weather</h1>
+            <p class="lead">Search city for Weather Forecast</p>
+            <p> Developed By: Aman Kumar</p>
+            <center>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="Data" placeholder="Enter city name.." />
+                </div>
+                <button class="cta" id="cta" onclick="weather.search()">
+                    <span>Search</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button>
+            </center>
+        </div>
+        <div class="col-sm-12">
+            <center>
+                <div class="alert alert-danger" style="display: none" id="Data1"></div>
+            </center>
+        </div>
+        <div class="col-sm-12 dataSet">
+            <h1 class="Loader">
+                <div class="myLoad" style="margin-bottom:10px;"></div>
+                Loading...
+            </h1>
+            <div class="col-sm-6 dataSet1">
+                <div class="City"></div>
+                <div class="temperature"></div>
+                <img src="" alt="" srcset="" class="Icon" />
+                <div class="discp"></div>
+            </div>
+            <div class="col-sm-6 dataSet2">
+                <div class="Speed"></div>
+                <div class="Humidity"></div>
+                <div class="Pressure"></div>
+                <div class="MaxT"></div>
+                <div class="MinT"></div>
+            </div>
+        </div>
+        <div class="col-sm-12" style="text-align: center">
+            <button class="btn btn-success" onclick="myCreateFunction()" id="Add" style="margin-top: 50px">
+                <h3>Add to Table</h3>
+            </button>
+            <button class="btn btn-warning" onclick="ExportToExcel('xlsx')" style="margin-top: 50px">
+                <h3>Download Table</h3>
+            </button>
+        </div>
+        <div class="col-sm-12" style="width: 100%;">
+            <table class="table" id="mydata" style="overflow: scroll;">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col " id="srno">
+                            <h3>Sr. No.</h3>
+                        </th>
+                        <th scope="col " id="place">
+                            <h3>Place</h3>
+                        </th>
+                        <th scope="col " id="temp1">
+                            <h3>Temperature</h3>
+                        </th>
+                        <th scope="col " id="hum">
+                            <h3>Humidity</h3>
+                        </th>
+                        <th scope="col " id="per">
+                            <h3>Pressure</h3>
+                        </th>
+                        <th scope="col " id="discr">
+                            <h3>Discription</h3>
+                        </th>
+                        <th scope="col " id="act">
+                            <h3>Action</h3>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript " src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js "></script>
+    <script src="script.js "></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</body>
+
+</html>
